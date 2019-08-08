@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qqw.demo.quartz.mapper.BusParameterMapper" >
+  <resultMap id="BaseResultMap" type="com.qqw.demo.quartz.entity.Parameter" extends="com.qqw.demo.quartz.mapper.ParameterMapper.BaseResultMap">
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, job_id, parameter_name, parameter_value, create_time, create_user, update_time,
+    update_user
+  </sql>
+  <select id="selectJobParameterList" resultMap="BaseResultMap" >
+    select 
+        parameter.id, parameter.job_id, parameter.parameter_name, parameter.parameter_value
+    from parameter
+        inner join job
+            on parameter.job_id = job.id and job.is_deleted = 0 and job.job_status = 0
+  </select>
+
+</mapper>

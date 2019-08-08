@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qqw.demo.quartz.mapper.BusJobMapper" >
+  <resultMap id="BaseResultMap" type="com.qqw.demo.quartz.entity.Job" extends="com.qqw.demo.quartz.mapper.JobMapper.BaseResultMap">
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, job_class_package_path, job_class_name, job_name, job_group_name, trigger_name, 
+    trigger_group_name, trigger_corn, job_start_time, job_end_time, job_status,
+    is_deleted, create_time, create_user, update_time, update_user
+  </sql>
+  <select id="selectJobList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from job
+    where
+    is_deleted = 0
+    and
+    job_status = 0
+  </select>
+
+</mapper>
