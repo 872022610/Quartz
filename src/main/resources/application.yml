@@ -1,1 +1,41 @@
+eureka:
+  instance:
+    hostname: localhost
+    #租期更新时间间隔（默认30秒）
+    lease-renewal-interval-in-seconds: 10
+    #租期到期时间（默认90秒）不怕出错的话，时间可以更短
+    lease-expiration-duration-in-seconds: 30
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka
+    #开启健康检查（需要spring-boot-starter-actuator依赖）
+    healthcheck:
+      enabled: true
 
+server:
+  port: 8032
+
+spring:
+  application:
+    name: service-quartz
+    # mysql路径，用户名、密码 以及驱动类
+  datasource:
+    url: jdbc:mysql://localhost:3306/qqw-demo-quartz?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialSize: 60
+    maxActive: 60
+    validationQuery: SELECT 1
+    testOnBorrow: true
+    testWhileIdle: true
+    testOnReturn: true
+    minEvictableIdleTimeMillis: 5000
+    timeBetweenEvictionRunsMillis: 8000
+
+mybatis:
+  #设置mapper的xml文件位置
+  mapper-locations: classpath:mybatis/*.xml
+  #mybatis属性映射功能，开启驼峰命名
+  configuration:
+    map-underscore-to-camel-case: true
