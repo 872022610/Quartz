@@ -149,6 +149,7 @@ public class QuartzController extends BaseController{
                                 //创建任务
                                 .build();
                 JobDataMap jobDataMap = jobDetail.getJobDataMap();
+                //设置参数
                 CommonUtil.setJobDataMap(jobDataMap,elementJobTaskModel.getParameterMap());
 
                 // 触发器类
@@ -176,7 +177,7 @@ public class QuartzController extends BaseController{
     }
 
     /**
-     * 获取当前所有的正在运行中的任务
+     * 获取当前scheduler中所有正在运行的任务
      * @author quanqiwei
      * @date 2019年8月5日 22:02:32
      * @return
@@ -213,5 +214,10 @@ public class QuartzController extends BaseController{
             return failure("1","失败");
         }
         return success(JsonPluginsUtil.beanListToJson(jobTaskModelList));
+    }
+
+    @PostMapping(value = "/demo")
+    public String demo(){
+        return  success();
     }
 }

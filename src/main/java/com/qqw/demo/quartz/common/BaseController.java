@@ -78,7 +78,6 @@ public class BaseController {
      * <p>Title: pageTotal<p>
      * <p>Description: <p>
      *
-     * @author zhaozhao
      * @date 2017-8-23 16:53
      */
     public String pageTotal(Page<?> page) {
