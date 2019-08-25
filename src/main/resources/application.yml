@@ -14,7 +14,8 @@ eureka:
 
 server:
   port: 8032
-
+  servlet:
+    context-path: /quartz
 spring:
   application:
     name: service-quartz
